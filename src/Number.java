@@ -24,9 +24,7 @@ public class Number {
         return false;
     }
 
-    static boolean isPrime(String strNum){
-        int n = Integer.parseInt(strNum);
-
+    static boolean isPrime(int n){
         if (n <= 1)
             return false;
         else if (n < 4 & n > 1)
@@ -37,7 +35,7 @@ public class Number {
             return true; // 25 is the first 6k+1 prime
 
         int i = 5;
-        while (i*i <= n)
+        while (square(i) <= n)
         {
             /* if n is divisible by 6k-1 or 6k+1
                then it isn't a prime number */
@@ -50,9 +48,7 @@ public class Number {
         return true;
     }
 
-    static long squareNum(String strNum){
-        int n = Integer.parseInt(strNum);
-
+    static long square(int n){
         return n*n;
     }
 
@@ -97,7 +93,7 @@ public class Number {
                     }
 
                     System.out.println(
-                            isPrime(inputNum) ? "Sí" : "No"
+                            isPrime(Integer.parseInt(inputNum)) ? "Sí" : "No"
                     );
                 }
                 case 4 -> {
@@ -108,7 +104,7 @@ public class Number {
                     }
 
                     System.out.println(
-                            squareNum(inputNum)
+                            square(Integer.parseInt(inputNum))
                     );
                 }
                 case 5 -> running = false;
