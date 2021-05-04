@@ -27,13 +27,33 @@ public class Number {
     static boolean isPrime(String strNum){
         int n = Integer.parseInt(strNum);
 
-        if (n == 1) {
+        if (n <= 1)
+            return false;
+        else if (n < 4 & n > 1)
+            return true; // 2 and 3 are primes
+        else if (n%2 == 0 | n%3 == 0)
+            return false; // their multiples aren't
+        else if (n<24)
+            return true; // 25 is the first 6k+1 prime
+
+        int i = 5;
+        while (i*i <= n)
+        {
+            /* if n is divisible by 6k-1 or 6k+1
+               then it isn't a prime number */
+            if (n%i == 0 | n%(i+2) == 0)
+                return false;
+
+            i+=6;
         }
-        return false;
+
+        return true;
     }
 
     static long squareNum(String strNum){
-        return 1;
+        int n = Integer.parseInt(strNum);
+
+        return n*n;
     }
 
     public static void main(String[] args) {
