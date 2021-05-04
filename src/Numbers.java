@@ -10,18 +10,11 @@ public class Numbers {
             "5.- Salir."
     };
 
-    static void ClearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     public static void main(String[] args) {
         // Set class for user input
         Scanner userInput = new Scanner(System.in);
         boolean running = true;
         while (running){
-            ClearScreen();
-
             // Print menu
             byte i;
             for (i = 0; i < menu.length; i++){
@@ -34,10 +27,7 @@ public class Numbers {
                 case 2 -> System.out.println(menu[1]);
                 case 3 -> System.out.println(menu[2]);
                 case 4 -> System.out.println(menu[3]);
-                case 5 -> {
-                    running = false;
-                    ClearScreen();
-                }
+                case 5 -> running = false;
                 default -> System.out.println("Entrada no válida");
             }
         }
