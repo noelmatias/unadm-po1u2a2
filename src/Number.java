@@ -31,18 +31,16 @@ public class Number {
             return true; // 2 and 3 are primes
         else if (n%2 == 0 | n%3 == 0)
             return false; // their multiples aren't
-        else if (n<24)
+        else if (n < 24)
             return true; // 25 is the first 6k+1 prime
 
         int i = 5;
-        while (square(i) <= n)
+        while (square(i+=6) <= n)
         {
             /* if n is divisible by 6k-1 or 6k+1
                then it isn't a prime number */
             if (n%i == 0 | n%(i+2) == 0)
                 return false;
-
-            i+=6;
         }
 
         return true;
