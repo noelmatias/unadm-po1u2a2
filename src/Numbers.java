@@ -1,17 +1,7 @@
 // ISO-8859-1 encoding
 import java.util.Scanner;
 
-public class Number {
-    static String[] menu = {
-            "1.- Registrar número:",
-            "2.- Es capicúa:",
-            "3.- Es primo:",
-            "4.- Elevado al cuadrado su producto es:",
-            "5.- Salir.",
-    };
-
-    static String noNum = "No se ha ingresado un número";
-
+public class Numbers {
     static boolean isPalindromic(String strNum){
         int strLen = strNum.length();
 
@@ -24,7 +14,7 @@ public class Number {
         return false;
     }
 
-    static boolean isPrime(int n){
+    static boolean isPrime(long n){
         if (n <= 1)
             return false;
         else if (n < 4 & n > 1)
@@ -34,7 +24,7 @@ public class Number {
         else if (n < 24)
             return true; // 25 is the first 6k+1 prime
 
-        int i = 5;
+        long i = 5;
         while (square(i+=6) <= n)
         {
             /* if n is divisible by 6k-1 or 6k+1
@@ -46,12 +36,23 @@ public class Number {
         return true;
     }
 
-    static long square(int n){
+    static long square(long n){
         return n*n;
     }
 
     public static void main(String[] args) {
-        /* User input */
+        /* Menu */
+        String[] menu = {
+                "1.- Registrar número:",
+                "2.- Es capicúa:",
+                "3.- Es primo:",
+                "4.- Elevado al cuadrado su producto es:",
+                "5.- Salir.",
+        };
+
+        String noNum = "No se ha ingresado un número";
+
+        /* User input scope*/
         Scanner userInput = new Scanner(System.in);
         String inputNum = "";
 
@@ -65,8 +66,7 @@ public class Number {
             }
 
             /* User selection */
-            byte menuItem = (byte) userInput.nextInt();
-            switch (menuItem) {
+            switch (userInput.nextInt()) {
                 case 1 -> {
                     System.out.println(menu[0]);
                     inputNum = userInput.next();
@@ -91,7 +91,7 @@ public class Number {
                     }
 
                     System.out.println(
-                            isPrime(Integer.parseInt(inputNum)) ? "Sí" : "No"
+                            isPrime(Long.parseLong(inputNum)) ? "Sí" : "No"
                     );
                 }
                 case 4 -> {
@@ -102,7 +102,7 @@ public class Number {
                     }
 
                     System.out.println(
-                            square(Integer.parseInt(inputNum))
+                            square(Long.parseLong(inputNum))
                     );
                 }
                 case 5 -> running = false;
